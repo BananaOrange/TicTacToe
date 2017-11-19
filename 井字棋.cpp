@@ -2,36 +2,36 @@
 #include<stdlib.h>
 #include<time.h>
 
-/*-----------------º¯ÊıÔ­ĞÍ----------------------*/
-void Menu(void);                                 //Ö÷²Ëµ¥
-void Rule(void);                                 //¹æÔòËµÃ÷
-void Strategy(void);                             //¾®×ÖÆå²ßÂÔ 
-char getfirst(void);                             //ÊäÈëÕıÈ·ĞÔ¼ì²â£¨Ö»¶ÁÈ¡Ã¿ĞĞµÚÒ»¸öÊäÈë£© 
-void BoardImg(int Board[],char Img[]) ;          //´òÓ¡ÆåÅÌÍ¼ĞÎ 
-void BoardMove(int order,int move,int Board[]);  //½«ÓÃ»§Âä×Ó£¨1~9£©´æÈëÆåÅÌÊı×é£¨0»ò1ĞÎÊ½£©
-int Initial(int order,int Board[]);              //³õÊ¼»¯¿ÕÆåÅÌ 
-int WinnerCheck(int Board[]);                    //Ê¤ÀûÅĞ±ğ£¬·µ»Ø3£¨ÏÈÊÖÊ¤£©»ò0£¨ºóÊÖÊ¤£© 
-int Full(int Board[]);                           //ÂúÆåÅÌÅĞ±ğ£¬·µ»ØÒ»¸ö½Ï´óÊıÖµ 
-void DOG_Easy(int Board[]);                      //¶ÔŞÄAI£¨¼òµ¥ÄÑ¶È£©£¬Ê¹ÓÃËæ»úÂä×Ó·½Ê½ 
-void DOG_Hard(int Board[]);                      //¶ÔŞÄAI£¨Õı³£ÄÑ¶È£©£¬Ê¹ÓÃÊ§°ÜµÄ·ÀÊØ²ßÂÔ£¨¼ì²â¶şÁ¬×Ó£©ºÍÔã¸âµÄ¹ÀÖµ²ßÂÔ(Ö»¹ÀÖµÏÂÒ»ÊÖ¾ÖÃæ) 
-void FirstMove(int Board[]);                     //µÚÒ»ÊÖ¹Ì¶¨×Å·¨£¬ÓÅÏÈÔÚÖĞ¼äÂä×Ó£¬Æä´ÎÊÇËÄ¸ö½ÇÂä 
-int isLegalMove(int n,int Board[]);              //ÅĞ¶Ï×Å·¨ÊÇ·ñºÏ·¨£¬·µ»Ø1£¨ºÏ·¨£©£¬0£¨·Ç·¨£© 
-int EvaValue(int Board[]);                       //¾ÖÃæ¹ÀÖµº¯Êı£¬½«ËùÓĞ¿ÉÒÔÂä×ÓµÄµØ·½ÌîÂú£¬¼ÆËãÈıÁ¬×Ó¸öÊı 
-int twoCount(int Board[]);                       //·µ»ØËùÓĞ¶şÁ¬×Ó£¨ĞĞÁĞĞ±ÓĞÁ½¸öÏàÍ¬Æå×Ó£©¸öÊı»òÕß×îÎ£ÏÕ¾ÖÃæ 
+/*-----------------å‡½æ•°åŸå‹----------------------*/
+void Menu(void);                                 //ä¸»èœå•
+void Rule(void);                                 //è§„åˆ™è¯´æ˜
+void Strategy(void);                             //äº•å­—æ£‹ç­–ç•¥ 
+char getfirst(void);                             //è¾“å…¥æ­£ç¡®æ€§æ£€æµ‹ï¼ˆåªè¯»å–æ¯è¡Œç¬¬ä¸€ä¸ªè¾“å…¥ï¼‰ 
+void BoardImg(int Board[],char Img[]) ;          //æ‰“å°æ£‹ç›˜å›¾å½¢ 
+void BoardMove(int order,int move,int Board[]);  //å°†ç”¨æˆ·è½å­ï¼ˆ1~9ï¼‰å­˜å…¥æ£‹ç›˜æ•°ç»„ï¼ˆ0æˆ–1å½¢å¼ï¼‰
+int Initial(int order,int Board[]);              //åˆå§‹åŒ–ç©ºæ£‹ç›˜ 
+int WinnerCheck(int Board[]);                    //èƒœåˆ©åˆ¤åˆ«ï¼Œè¿”å›3ï¼ˆå…ˆæ‰‹èƒœï¼‰æˆ–0ï¼ˆåæ‰‹èƒœï¼‰ 
+int Full(int Board[]);                           //æ»¡æ£‹ç›˜åˆ¤åˆ«ï¼Œè¿”å›ä¸€ä¸ªè¾ƒå¤§æ•°å€¼ 
+void DOG_Easy(int Board[]);                      //å¯¹å¼ˆAIï¼ˆç®€å•éš¾åº¦ï¼‰ï¼Œä½¿ç”¨éšæœºè½å­æ–¹å¼ 
+void DOG_Hard(int Board[]);                      //å¯¹å¼ˆAIï¼ˆæ­£å¸¸éš¾åº¦ï¼‰ï¼Œä½¿ç”¨å¤±è´¥çš„é˜²å®ˆç­–ç•¥ï¼ˆæ£€æµ‹äºŒè¿å­ï¼‰å’Œç³Ÿç³•çš„ä¼°å€¼ç­–ç•¥(åªä¼°å€¼ä¸‹ä¸€æ‰‹å±€é¢) 
+void FirstMove(int Board[]);                     //ç¬¬ä¸€æ‰‹å›ºå®šç€æ³•ï¼Œä¼˜å…ˆåœ¨ä¸­é—´è½å­ï¼Œå…¶æ¬¡æ˜¯å››ä¸ªè§’è½ 
+int isLegalMove(int n,int Board[]);              //åˆ¤æ–­ç€æ³•æ˜¯å¦åˆæ³•ï¼Œè¿”å›1ï¼ˆåˆæ³•ï¼‰ï¼Œ0ï¼ˆéæ³•ï¼‰ 
+int EvaValue(int Board[]);                       //å±€é¢ä¼°å€¼å‡½æ•°ï¼Œå°†æ‰€æœ‰å¯ä»¥è½å­çš„åœ°æ–¹å¡«æ»¡ï¼Œè®¡ç®—ä¸‰è¿å­ä¸ªæ•° 
+int twoCount(int Board[]);                       //è¿”å›æ‰€æœ‰äºŒè¿å­ï¼ˆè¡Œåˆ—æ–œæœ‰ä¸¤ä¸ªç›¸åŒæ£‹å­ï¼‰ä¸ªæ•°æˆ–è€…æœ€å±é™©å±€é¢ 
 
-/*----------------Ö÷³ÌĞò------------------------*/
+/*----------------ä¸»ç¨‹åº------------------------*/
 int main(void)
 {
 Label_begin:
 	
-	int order=0;             //ÏÈºóÊÖÅĞ±ğ,1±íÊ¾ÏÈÊÖ,0±íÊ¾ºóÊÖ 
-	int choice;              //ÓÃ»§µÄÄ£Ê½Ñ¡Ôñ
-	int move;                //ÓÃ»§µÄÂä×Ó 
-	int level;               //ÓÃ»§Ñ¡ÔñµÄAIÄÑ¶È
-	int dogmove; 			 //AIµÄÂä×Ó 
-	int depth=9;             //Âä×Ó×Ü²½Êı£¬³õÊ¼»¯Îª9ºó×ö×Ô¼õÔËËã
-	int Board[9]={100,100,100,100,100,100,100,100,100} ;   //ÆåÅÌÊı×é£¬ÓÃ½Ï´óµÄÊı×Ö½øĞĞ³õÊ¼»¯£¬ÒÔ±ãºóĞøÊ¤ÀûÅĞ±ğ
-	char Img[9]={'_','_','_','_','_','_','_','_','_'} ;    //ÆåÅÌÍ¼ĞÎ£¬ÏÂ»®Ïß±íÊ¾¿Õ£¬X±íÊ¾ÏÈÊÖ£¬O±íÊ¾ºóÊÖ 
+	int order=0;             //å…ˆåæ‰‹åˆ¤åˆ«,1è¡¨ç¤ºå…ˆæ‰‹,0è¡¨ç¤ºåæ‰‹ 
+	int choice;              //ç”¨æˆ·çš„æ¨¡å¼é€‰æ‹©
+	int move;                //ç”¨æˆ·çš„è½å­ 
+	int level;               //ç”¨æˆ·é€‰æ‹©çš„AIéš¾åº¦
+	int dogmove; 	         //AIçš„è½å­ 
+	int depth=9;             //è½å­æ€»æ­¥æ•°ï¼Œåˆå§‹åŒ–ä¸º9ååšè‡ªå‡è¿ç®—
+	int Board[9]={100,100,100,100,100,100,100,100,100} ;   //æ£‹ç›˜æ•°ç»„ï¼Œç”¨è¾ƒå¤§çš„æ•°å­—è¿›è¡Œåˆå§‹åŒ–ï¼Œä»¥ä¾¿åç»­èƒœåˆ©åˆ¤åˆ«
+	char Img[9]={'_','_','_','_','_','_','_','_','_'} ;    //æ£‹ç›˜å›¾å½¢ï¼Œä¸‹åˆ’çº¿è¡¨ç¤ºç©ºï¼ŒXè¡¨ç¤ºå…ˆæ‰‹ï¼ŒOè¡¨ç¤ºåæ‰‹ 
 	 
 Label_menu:	
 
@@ -40,113 +40,113 @@ Label_menu:
 
 	while(choice<'1'||choice>'3')
 		{
-		printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë£º\n");	
+		printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š\n");	
 		choice=getfirst();
 		}
 					
 	switch(choice)
 	{
-		case '1': printf("      <ÒÑÑ¡ÔñÁ½ÈË¶ÔŞÄ>\n");
+		case '1': printf("      <å·²é€‰æ‹©ä¸¤äººå¯¹å¼ˆ>\n");
 				  Rule();
 		          break;
-		case '2': printf("      <ÒÑÑ¡ÔñÈË»ú¶ÔŞÄ>\n");				
+		case '2': printf("      <å·²é€‰æ‹©äººæœºå¯¹å¼ˆ>\n");				
 		          break;
-		case '3': printf("        <¾®×ÖÆåµÄ²ßÂÔ>\n");
+		case '3': printf("        <äº•å­—æ£‹çš„ç­–ç•¥>\n");
 				  Strategy();
 				  printf("\n");
 	              goto Label_menu;
     }
     
- 	while(choice=='1')              //Á½ÈË¶ÔŞÄÄ£Ê½ 
+ 	while(choice=='1')              //ä¸¤äººå¯¹å¼ˆæ¨¡å¼ 
     {
     	BoardImg(Board,Img); 
-    	order=(order+1)%2;          //ÅĞ¶ÏÏÈºóÊÖ
+    	order=(order+1)%2;          //åˆ¤æ–­å…ˆåæ‰‹
     	
     	if(order==1)
-    	printf("\nÏÈÊÖÇëÂä×Ó£º");
+    	printf("\nå…ˆæ‰‹è¯·è½å­ï¼š");
     	if(order==0)
-    	printf("\nºóÊÖÇëÂä×Ó£º");
+    	printf("\nåæ‰‹è¯·è½å­ï¼š");
     	
-       	scanf("%d",&move);           //¶ÁÈ¡ÓÃ»§Âä×Ó 
-       	if(move==0)					 //Èç¹ûÊäÈë0Ôò·µ»ØÖ÷²Ëµ¥ 
+       	scanf("%d",&move);           //è¯»å–ç”¨æˆ·è½å­ 
+       	if(move==0)		     //å¦‚æœè¾“å…¥0åˆ™è¿”å›ä¸»èœå• 
        	{
 			choice=getchar();
        		break;
 		}
     	       			         	
-       	BoardMove(order,move,Board); //½«ÓÃ»§Âä×Ó´æÈëÆåÅÌÊı×é 
+       	BoardMove(order,move,Board); //å°†ç”¨æˆ·è½å­å­˜å…¥æ£‹ç›˜æ•°ç»„ 
        	
        	if(WinnerCheck(Board)==3)
        	{
 		   BoardImg(Board,Img); 
-		   printf("\n<ÏÈÊÖÊ¤Àû!>\n\n\n<ÖØĞÂ¿ªÊ¼>\n");
+		   printf("\n<å…ˆæ‰‹èƒœåˆ©!>\n\n\n<é‡æ–°å¼€å§‹>\n");
 		   order=Initial(order,Board);
 		} 
 		if(WinnerCheck(Board)==0)
        	{
 		   BoardImg(Board,Img); 
-		   printf("\n<ºóÊÖÊ¤Àû!>\n\n\n<ÖØĞÂ¿ªÊ¼>\n");
+		   printf("\n<åæ‰‹èƒœåˆ©!>\n\n\n<é‡æ–°å¼€å§‹>\n");
 		   order=Initial(order,Board);
 		} 
 		if(Full(Board)<100)
 		{
 		   BoardImg(Board,Img); 
-		   printf("\n<Ë«·½ºÍÆå!>\n\n\n<ÖØĞÂ¿ªÊ¼>\n");
+		   printf("\n<åŒæ–¹å’Œæ£‹!>\n\n\n<é‡æ–°å¼€å§‹>\n");
 		   order=Initial(order,Board);
 		}
 	}
 	
-	if(choice=='2')                        //¶ÔŞÄAIÄÑ¶ÈÑ¡Ôñ 
+	if(choice=='2')                        //å¯¹å¼ˆAIéš¾åº¦é€‰æ‹© 
 	{
-			printf("\nÇëÑ¡Ôñ¶ÔŞÄAIÄÑ¶È£º   1.¼òµ¥      2.Õı³£\n");
+			printf("\nè¯·é€‰æ‹©å¯¹å¼ˆAIéš¾åº¦ï¼š   1.ç®€å•      2.æ­£å¸¸\n");
 			level=getfirst();		
 			while(level<'1'||level>'2')
 			{
-				printf("ÊäÈëÓĞÎó£¬ÇëÖØĞÂÊäÈë£º\n");	
+				printf("è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š\n");	
 				level=getfirst();
 			}
 			switch(level)
 			{
-			case '1': printf("      <ÒÑÑ¡Ôñ¼òµ¥ÄÑ¶È>\n");
+			case '1': printf("      <å·²é€‰æ‹©ç®€å•éš¾åº¦>\n");
 				  Rule();
 		          break;
-			case '2': printf("      <ÒÑÑ¡ÔñÕı³£ÄÑ¶È>\n");
+			case '2': printf("      <å·²é€‰æ‹©æ­£å¸¸éš¾åº¦>\n");
 				  Rule();
 		          break;	
 			}
 			
 	}
 		
-		while(choice=='2')           //ÈË»ú¶ÔŞÄÄ£Ê½ 
+		while(choice=='2')           //äººæœºå¯¹å¼ˆæ¨¡å¼ 
 	{	
 		BoardImg(Board,Img);
-		order=(order+1)%2;          //ÅĞ¶ÏÏÈºóÊÖ
+		order=(order+1)%2;          //åˆ¤æ–­å…ˆåæ‰‹
     	if(order==1)
     	{
-    		printf("\nÍæ¼ÒÇëÂä×Ó£º");    	
-       		scanf("%d",&move);           //¶ÁÈ¡ÓÃ»§Âä×Ó 
-			if(move==0)					 //Èç¹ûÊäÈë0Ôò·µ»ØÖ÷²Ëµ¥ 
+    		printf("\nç©å®¶è¯·è½å­ï¼š");    	
+       		scanf("%d",&move);           //è¯»å–ç”¨æˆ·è½å­ 
+			if(move==0)	     //å¦‚æœè¾“å…¥0åˆ™è¿”å›ä¸»èœå• 
        		{
 				choice=getchar();
        			break;
 			}
-			BoardMove(order,move,Board); //½«ÓÃ»§Âä×Ó´æÈëÆåÅÌÊı×é 	
+			BoardMove(order,move,Board); //å°†ç”¨æˆ·è½å­å­˜å…¥æ£‹ç›˜æ•°ç»„ 	
 			depth--;
 		}		   
        	
         
-       	if(order==0&&level=='1')       //¼òµ¥Ä£Ê½ 
+       	if(order==0&&level=='1')       //ç®€å•æ¨¡å¼ 
        	{
-    		printf("\nµçÄÔË¼¿¼ÖĞ...\n");
+    		printf("\nç”µè„‘æ€è€ƒä¸­...\n");
     		DOG_Easy(Board);
     	}
     	
-    	if(order==0&&level=='2')      //Õı³£Ä£Ê½ 
+    	if(order==0&&level=='2')      //æ­£å¸¸æ¨¡å¼ 
 		{	
-			printf("\nµçÄÔË¼¿¼ÖĞ...\n");	
+			printf("\nç”µè„‘æ€è€ƒä¸­...\n");	
 			if(depth==8)
 			{
-				FirstMove(Board);   //µÚÒ»ÊÖ¹Ì¶¨×Å·¨ 			
+				FirstMove(Board);   //ç¬¬ä¸€æ‰‹å›ºå®šç€æ³• 			
 			}	
 			else
 			{	 			
@@ -160,21 +160,21 @@ Label_menu:
     	if(WinnerCheck(Board)==3)
        	{
 		   BoardImg(Board,Img); 
-		   printf("\n<Íæ¼ÒÊ¤Àû!>\n\n\n<ÖØĞÂ¿ªÊ¼>\n");
+		   printf("\n<ç©å®¶èƒœåˆ©!>\n\n\n<é‡æ–°å¼€å§‹>\n");
 		   order=Initial(order,Board);
 		   depth=9;
 		} 
 		if(WinnerCheck(Board)==0)
        	{
 		   BoardImg(Board,Img); 
-		   printf("\n<AIÊ¤Àû!>\n\n\n<ÖØĞÂ¿ªÊ¼>\n");
+		   printf("\n<AIèƒœåˆ©!>\n\n\n<é‡æ–°å¼€å§‹>\n");
 		   order=Initial(order,Board);
 		   depth=9;
 		} 
 		if(Full(Board)<100)
 		{
 		   BoardImg(Board,Img); 
-		   printf("\n<Ë«·½ºÍÆå!>\n\n\n<ÖØĞÂ¿ªÊ¼>\n");
+		   printf("\n<åŒæ–¹å’Œæ£‹!>\n\n\n<é‡æ–°å¼€å§‹>\n");
 		   order=Initial(order,Board);
 		   depth=9;
 		}
@@ -184,36 +184,36 @@ Label_menu:
 	return 0;
  } 
  
- /*-------------ËùÓĞº¯Êı------------------------*/
+ /*-------------æ‰€æœ‰å‡½æ•°------------------------*/
 void Menu(void)
 {
 	printf("*******************************\n");
-	printf("*   »¶Ó­À´µ½¾®×ÖÆå£¡ÇëÑ¡Ôñ£º  *\n");
+	printf("*   æ¬¢è¿æ¥åˆ°äº•å­—æ£‹ï¼è¯·é€‰æ‹©ï¼š      *\n");
 	printf("*                             *\n");
-	printf("*      1.Á½ÈË¶ÔŞÄ             *\n");
-	printf("*      2.ÈË»ú¶ÔŞÄ             *\n");
-	printf("*      3.¾®×ÖÆå²ßÂÔ           *\n");
+	printf("*      1.ä¸¤äººå¯¹å¼ˆ              *\n");
+	printf("*      2.äººæœºå¯¹å¼ˆ              *\n");
+	printf("*      3.äº•å­—æ£‹ç­–ç•¥            *\n");
 	printf("*                             *\n");
-	printf("*£¨Tip:¶ÔŞÄÊ±ÊäÈë0·µ»ØÖ÷²Ëµ¥£©*\n");
+	printf("*ï¼ˆTip:å¯¹å¼ˆæ—¶è¾“å…¥0è¿”å›ä¸»èœå•ï¼‰    *\n");
 	printf("*******************************\n");
  } 
  
  void Rule(void)
  {
  	printf("\n");
-	printf("NO.1  Çë¿´ÏòĞ¡¼üÅÌ£¬Ğ¡¼üÅÌµÄ9¸öÊı×Ö·Ö±ğ¶ÔÓ¦ÆåÅÌµÄ¾Å¸öÎ»ÖÃ¡£\n");
- 	printf("NO.2  ±ÈÈç£¬¼üÈëÊı×Ö7£¬ÔòÔÚÆåÅÌµÄ×óÉÏ½ÇÂä×Ó¡£\n");
- 	printf("NO.3  _±íÊ¾¿Õ£¬X±íÊ¾ÏÈÊÖ£¬O±íÊ¾ºóÊÖ¡£\n");
+	printf("NO.1  è¯·çœ‹å‘å°é”®ç›˜ï¼Œå°é”®ç›˜çš„9ä¸ªæ•°å­—åˆ†åˆ«å¯¹åº”æ£‹ç›˜çš„ä¹ä¸ªä½ç½®ã€‚\n");
+ 	printf("NO.2  æ¯”å¦‚ï¼Œé”®å…¥æ•°å­—7ï¼Œåˆ™åœ¨æ£‹ç›˜çš„å·¦ä¸Šè§’è½å­ã€‚\n");
+ 	printf("NO.3  _è¡¨ç¤ºç©ºï¼ŒXè¡¨ç¤ºå…ˆæ‰‹ï¼ŒOè¡¨ç¤ºåæ‰‹ã€‚\n");
  	printf("\n");
- 	printf("ÆåÅÌÈçÏÂ:\n");
+ 	printf("æ£‹ç›˜å¦‚ä¸‹:\n");
  	printf("\n");
  }             
  
  void Strategy(void)
  {
  	printf("\n");
- 	printf("ÏÈÊÖµÄ×îÓÅÑ¡ÔñÊÇËÄ¸ö½ÇÂä£¬´ÎÓÅÑ¡Ôñ²ÅÊÇÖĞ¼äÎ»ÖÃ¡£\n");
- 	printf("ºóÊÖµÄ×îÓÅÑ¡ÔñÊÇÖĞ¼äÎ»ÖÃ£¬Æä´ÎÊÇËÄ¸ö½ÇÂä¡£\n");
+ 	printf("å…ˆæ‰‹çš„æœ€ä¼˜é€‰æ‹©æ˜¯å››ä¸ªè§’è½ï¼Œæ¬¡ä¼˜é€‰æ‹©æ‰æ˜¯ä¸­é—´ä½ç½®ã€‚\n");
+ 	printf("åæ‰‹çš„æœ€ä¼˜é€‰æ‹©æ˜¯ä¸­é—´ä½ç½®ï¼Œå…¶æ¬¡æ˜¯å››ä¸ªè§’è½ã€‚\n");
  	printf("\n");
  }
  
@@ -228,8 +228,8 @@ void Menu(void)
  
  void BoardImg(int Board[],char Img[])
  {
- 	int i;      //±éÀúÊı×é¼ÆÊı 
- 	int j=0;    //·ÖĞĞ´òÓ¡Ê±µÄ¼ÆÊı±äÁ¿ 
+ 	int i;      //éå†æ•°ç»„è®¡æ•° 
+ 	int j=0;    //åˆ†è¡Œæ‰“å°æ—¶çš„è®¡æ•°å˜é‡ 
  	for(i=0;i<=8;i++)
  	{
  		if(Board[i]==100)
@@ -266,10 +266,10 @@ void Menu(void)
 
  int WinnerCheck(int Board[])
 {
-	int winner;       //3±íÊ¾ÏÈÊÖÊ¤Àû£¬0±íÊ¾ºóÊÖÊ¤Àû
-	int i;            //±éÀúÊı×é±äÁ¿
-	int ignore;       //Èç¹ûĞĞ¼ì²â³É¹¦£¬ºöÂÔÁĞ¼ì²â 
-	for(i=0;i<=6;i=i+3) //ĞĞ¼ì²â 
+	int winner;       //3è¡¨ç¤ºå…ˆæ‰‹èƒœåˆ©ï¼Œ0è¡¨ç¤ºåæ‰‹èƒœåˆ©
+	int i;            //éå†æ•°ç»„å˜é‡
+	int ignore;       //å¦‚æœè¡Œæ£€æµ‹æˆåŠŸï¼Œå¿½ç•¥åˆ—æ£€æµ‹ 
+	for(i=0;i<=6;i=i+3) //è¡Œæ£€æµ‹ 
 	{
 		winner=Board[i]+Board[i+1]+Board[i+2];
 		if(winner==3)
@@ -286,7 +286,7 @@ void Menu(void)
 	
 	if(ignore!=1)
 	{
-	for(i=0;i<=2;i++)  //ÁĞ¼ì²â 
+	for(i=0;i<=2;i++)  //åˆ—æ£€æµ‹ 
 	{
 		winner=Board[i]+Board[i+3]+Board[i+6];
 		if(winner==3)
@@ -295,7 +295,7 @@ void Menu(void)
 		break;
 	}
 	}
-	                     /*¶Ô½Ç¼ì²â*/ 
+	                     /*å¯¹è§’æ£€æµ‹*/ 
 	if((Board[0]+Board[4]+Board[8])==3)
 	winner=3;
 	if((Board[2]+Board[4]+Board[6])==3)
@@ -329,11 +329,11 @@ int Initial(int order,int Board[])
 void DOG_Easy(int Board[])
  {
 
- 	int dogmove;                  //AIËæ»úÂä×Ó   
+ 	int dogmove;                  //AIéšæœºè½å­   
  	do
  	{
  		srand((unsigned)time(NULL));
- 		dogmove=rand()%9;        //Éú³É0~8Ëæ»úÊı				     
+ 		dogmove=rand()%9;        //ç”Ÿæˆ0~8éšæœºæ•°				     
 	 }	while(Board[dogmove]!=100);
  	Board[dogmove]=0;
  }
@@ -367,13 +367,13 @@ void DOG_Easy(int Board[])
  {
  	int i;
  	int value=0;
- 	int CopyArr[9];                     //¶¨ÒåÒ»¸öÁÙÊ±Êı×é¸´ÖÆBoard
+ 	int CopyArr[9];                     //å®šä¹‰ä¸€ä¸ªä¸´æ—¶æ•°ç»„å¤åˆ¶Board
 	for(i=0;i<9;i++)
 	{
 		CopyArr[i]=Board[i];
 	 } 
 	  
- 	for(i=0;i<9;i++)                    //ÌîÂúËùÓĞ¿ÉÒÔÂä×ÓµÄµØ·½ 
+ 	for(i=0;i<9;i++)                    //å¡«æ»¡æ‰€æœ‰å¯ä»¥è½å­çš„åœ°æ–¹ 
  	{
  		if(isLegalMove(i,CopyArr))
  		{
@@ -381,7 +381,7 @@ void DOG_Easy(int Board[])
 		 }
 	 }
 	 	 
-	 //*ĞĞÁĞĞ±¹ÀÖµ 
+	 //*è¡Œåˆ—æ–œä¼°å€¼ 
 	 if((CopyArr[0]+CopyArr[1]+CopyArr[2])==0) value++;
 	 if((CopyArr[3]+CopyArr[4]+CopyArr[5])==0) value++;
 	 if((CopyArr[6]+CopyArr[7]+CopyArr[8])==0) value++;
@@ -396,8 +396,8 @@ void DOG_Easy(int Board[])
  
  int twoCount(int Board[])
  { 
- 	int count=0;       //¶şÁ¬×Ó¸öÊı 
- 	int danger=-1;      //Ò»ÖÖÌØ¶¨µÄÎ£ÏÕ¾ÖÃæ £¬Êı×é±íÊ¾Îª100,100,1,100,0,100,1,100,100£¨ÒÔ¼°Æä¶Ô³Æ¾ÖÃæ£© 
+ 	int count=0;       //äºŒè¿å­ä¸ªæ•° 
+ 	int danger=-1;     //ä¸€ç§ç‰¹å®šçš„å±é™©å±€é¢ ï¼Œæ•°ç»„è¡¨ç¤ºä¸º100,100,1,100,0,100,1,100,100ï¼ˆä»¥åŠå…¶å¯¹ç§°å±€é¢ï¼‰ 
  	int sum;
  	int i;
  	
@@ -405,7 +405,7 @@ void DOG_Easy(int Board[])
  	{
  		sum+=Board[i];    
 	}
-	if(sum==602)          //Èç¹û´ËÎ£ÏÕ¾ÖÃæ´æÔÚ£¬dangerµÄÖµÓ¦¸ÃÎª602	
+	if(sum==602)          //å¦‚æœæ­¤å±é™©å±€é¢å­˜åœ¨ï¼Œdangerçš„å€¼åº”è¯¥ä¸º602	
 	{
 		if(((Board[0]+Board[4]+Board[8])==2)||((Board[2]+Board[4]+Board[6])==2))
 		{
@@ -414,7 +414,7 @@ void DOG_Easy(int Board[])
 		 
 	}
 	
- 	for(i=0;i<=6;i=i+3) //ĞĞ¼ì²â 
+ 	for(i=0;i<=6;i=i+3) //è¡Œæ£€æµ‹ 
 	{
 		if((Board[i]+Board[i+1]+Board[i+2])==102)
 		{
@@ -423,14 +423,14 @@ void DOG_Easy(int Board[])
 	
 	}
 	
-	for(i=0;i<=2;i++)  //ÁĞ¼ì²â 
+	for(i=0;i<=2;i++)  //åˆ—æ£€æµ‹ 
 	{
 		if((Board[i]+Board[i+3]+Board[i+6])==102)
 		{
 			count++;
 		}
 	}
-                 	 //¶Ô½Ç¼ì²â
+                 	 //å¯¹è§’æ£€æµ‹
 	if((Board[0]+Board[4]+Board[8])==102)   count++;
 	if((Board[2]+Board[4]+Board[6])==102)   count++;
 	
@@ -440,13 +440,13 @@ void DOG_Easy(int Board[])
  void DOG_Hard(int Board[])
  {
  	int i;
-	int isTwo=0;        //Èç¹ûÓĞ¶şÁ¬×ÓÖÃ1£¬·ñÔòÖÃ0
- 	int bestmove;       //×î¼Ñ×ß·¨ 
- 	int ignore=0;       //Èç¹û¼ì²âµ½ĞĞ¶şÁ¬×Ó£¬Ìø¹ıÁĞ¼ì²â 
-	int value=-1;       //³õÊ¼»¯Ò»¸ö¾ÖÃæ¹ÀÖµ£¬ÉèÎª-1ÒÔ±ã¹ÀÖµº¯Êı¸üĞÂ´ËÊıÖµ 
-	int MaxValue;       //×îºÃµÄ¹ÀÖµ·ÖÊı£¬ĞèÒª²»¶Ï¸üĞÂ 
-	 /*¼ì²â¶şÁ¬×Ó*/
- 	for(i=0;i<=6;i=i+3) //ĞĞ¼ì²â 
+	int isTwo=0;        //å¦‚æœæœ‰äºŒè¿å­ç½®1ï¼Œå¦åˆ™ç½®0
+ 	int bestmove;       //æœ€ä½³èµ°æ³• 
+ 	int ignore=0;       //å¦‚æœæ£€æµ‹åˆ°è¡ŒäºŒè¿å­ï¼Œè·³è¿‡åˆ—æ£€æµ‹ 
+	int value=-1;       //åˆå§‹åŒ–ä¸€ä¸ªå±€é¢ä¼°å€¼ï¼Œè®¾ä¸º-1ä»¥ä¾¿ä¼°å€¼å‡½æ•°æ›´æ–°æ­¤æ•°å€¼ 
+	int MaxValue;       //æœ€å¥½çš„ä¼°å€¼åˆ†æ•°ï¼Œéœ€è¦ä¸æ–­æ›´æ–° 
+	 /*æ£€æµ‹äºŒè¿å­*/
+ 	for(i=0;i<=6;i=i+3) //è¡Œæ£€æµ‹ 
 	{
 		if((Board[i]+Board[i+1]+Board[i+2])==102)
 		{
@@ -462,7 +462,7 @@ void DOG_Easy(int Board[])
 	
 	if(ignore==0)
 	{
-		for(i=0;i<=2;i++)  //ÁĞ¼ì²â 
+		for(i=0;i<=2;i++)  //åˆ—æ£€æµ‹ 
 		{
 			if((Board[i]+Board[i+3]+Board[i+6])==102)
 			{
@@ -474,7 +474,7 @@ void DOG_Easy(int Board[])
 			}
 		}
 	}
-	                     //¶Ô½Ç¼ì²â
+	                     //å¯¹è§’æ£€æµ‹
 	if((Board[0]+Board[4]+Board[8])==102)
 	{
 		if(Board[0]==100)		Board[0]=0;		   
@@ -491,21 +491,21 @@ void DOG_Easy(int Board[])
 		isTwo=1; 
 	}
 	
-	/*¼ì²â²»µ½¶şÁ¬×Ó¾ÍËæ»úÂä×Ó²¢ÓÃ¹ÀÖµº¯Êı¹ÀÖµ*/
+	/*æ£€æµ‹ä¸åˆ°äºŒè¿å­å°±éšæœºè½å­å¹¶ç”¨ä¼°å€¼å‡½æ•°ä¼°å€¼*/
 	if(isTwo==0)
 	{	
 		int dogmove;
-		int CopyArr[9];                     //¶¨ÒåÒ»¸öÁÙÊ±Êı×é¸´ÖÆBoard
+		int CopyArr[9];                     //å®šä¹‰ä¸€ä¸ªä¸´æ—¶æ•°ç»„å¤åˆ¶Board
 		for(i=0;i<9;i++)
 		{
 			CopyArr[i]=Board[i];
 	 	} 
 	 	
-	 	for(i=0;i<9;i++)                             //·ÀÖ¹Ò»ÖÖÎ£ÏÕµÄÇé¿ö£¬¼´ÏÈÊÖÄ³Ò»Âä×Ó»áÔì³ÉĞĞÁĞ¾ù´æÔÚ¶şÁ¬×Ó 
+	 	for(i=0;i<9;i++)                    //é˜²æ­¢ä¸€ç§å±é™©çš„æƒ…å†µï¼Œå³å…ˆæ‰‹æŸä¸€è½å­ä¼šé€ æˆè¡Œåˆ—å‡å­˜åœ¨äºŒè¿å­ 
 	 	{
 	 		if(isLegalMove(i,CopyArr))
 	 		{
-	 			if((twoCount(CopyArr)==1000))       //×îÎ£ÏÕÇé¿ö 
+	 			if((twoCount(CopyArr)==1000))       //æœ€å±é™©æƒ…å†µ 
 	 			{	 				
 					do
 					{
@@ -523,7 +523,7 @@ void DOG_Easy(int Board[])
 	 					Board[i]=0;
 	 					return ;
 					}
-					CopyArr[i]=100;          //³·Ïú×ß·¨
+					CopyArr[i]=100;          //æ’¤é”€èµ°æ³•
 				}
 	 			
 			}
@@ -539,9 +539,9 @@ void DOG_Easy(int Board[])
 	 			if(MaxValue>=value)
 	 			{
 	 				value=MaxValue;	
-	 				bestmove=i;          //±£´æ×î¼Ñ×ß·¨ 
+	 				bestmove=i;          //ä¿å­˜æœ€ä½³èµ°æ³• 
 				}
-				CopyArr[i]=100;          //³·Ïú×ß·¨
+				CopyArr[i]=100;              //æ’¤é”€èµ°æ³•
 					
 			}
 		}
