@@ -260,7 +260,7 @@ void Menu(void)
  			case 6: Board[5]=order;break;
  			case 7: Board[0]=order;break;
  			case 8: Board[1]=order;break;
- 		    case 9: Board[2]=order;break;
+ 		        case 9: Board[2]=order;break;
 		 }
  }
 
